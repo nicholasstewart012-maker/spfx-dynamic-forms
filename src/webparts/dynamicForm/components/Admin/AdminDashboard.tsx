@@ -32,8 +32,14 @@ export const AdminDashboard: React.FC<IAdminDashboardProps> = (props) => {
         { key: 'version', name: 'Version', fieldName: 'version', minWidth: 50, maxWidth: 50 },
         { key: 'modified', name: 'Last Modified', fieldName: 'modified', minWidth: 100, maxWidth: 150 },
         {
-            key: 'action', name: 'Action', minWidth: 100, onRender: (item) => (
-                <button onClick={() => props.onEditForm(item)}>Edit</button>
+            key: 'action', name: 'Action', minWidth: 150, onRender: (item) => (
+                <div style={{ display: 'flex', gap: 10 }}>
+                    <button onClick={() => {
+                        navigator.clipboard.writeText(item.id);
+                        alert('Form ID copied to clipboard: ' + item.id);
+                    }}>Copy ID</button>
+                    <button onClick={() => props.onEditForm(item)}>Edit</button>
+                </div>
             )
         }
     ];
