@@ -1,0 +1,23 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "whichFolder": "subdir",
+    "solutionName": "spfx-dynamic-forms",
+    "environment": "spo",
+    "packageManager": "npm",
+    "useGulp": false,
+    "componentType": "webpart",
+    "template": "react",
+    "componentName": "DynamicForm",
+    "componentDescription": "Dynamic Form Builder",
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.18.0",
+    "sdksVersions": {},
+    "version": "1.22.2",
+    "libraryName": "spfx-dynamic-forms",
+    "libraryId": "ce46ecf9-9a37-4689-801d-2cac08f30765",
+    "solutionShortDescription": "spfx-dynamic-forms description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false
+  }
+}
