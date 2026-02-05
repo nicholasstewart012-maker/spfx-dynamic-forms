@@ -1,4 +1,4 @@
-export type QuestionType = 'Text' | 'Note' | 'Choice' | 'Dropdown' | 'Date' | 'Number' | 'People' | 'YesNo' | 'Attachment';
+export type QuestionType = 'Text' | 'Note' | 'Choice' | 'Dropdown' | 'Date' | 'Number' | 'People' | 'YesNo' | 'Attachment' | 'Rating';
 
 export interface IAutoFillConfig {
   enabled: boolean;
