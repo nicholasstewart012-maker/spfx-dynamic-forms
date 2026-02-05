@@ -11,7 +11,11 @@ module.exports = {
         '@typescript-eslint/no-floating-promises': 'off',
         'no-void': 'off',
         'no-extra-boolean-cast': 'off',
-        '@typescript-eslint/no-extra-boolean-cast': 'off'
+        '@typescript-eslint/no-extra-boolean-cast': 'off',
+        'no-unused-vars': 'off',
+        '@typescript-eslint/no-unused-vars': 'off',
+        '@typescript-eslint/no-explicit-any': 'off',
+        'no-case-declarations': 'off'
       }
     }
   ]

@@ -1,0 +1,70 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.canvas {
+    background-color: #f0f0f0; // Light gray background like MS Forms
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card {
+    background: white;
+    width: 100%;
+    max-width: 720px; // Standard readable width
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Elevation 1
+    margin-bottom: 16px;
+    position: relative;
+    transition: all 0.2s ease-in-out;
+    border-left: 4px solid transparent; // Reserve space for selection indicator
+
+    &:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12); // Elevation 2
+    }
+}
+
+.cardSelected {
+    border-left-color: "[theme: themePrimary, default: #0078d4]";
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.14); // Elevation 3
+}
+
+.cardHeader {
+    padding: 20px 24px 0 24px;
+}
+
+.cardContent {
+    padding: 20px 24px;
+}
+
+.cardActions {
+    display: flex;
+    justify-content: flex-end;
+    padding: 12px 24px;
+    border-top: 1px solid #edebe9;
+    gap: 8px;
+}
+
+.titleInput {
+    font-size: 24px;
+    font-weight: 600;
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 8px 0;
+
+    &:focus {
+        border-bottom: 2px solid "[theme: themePrimary, default: #0078d4]";
+    }
+}
+
+.descriptionInput {
+    font-size: 14px;
+    color: #666;
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 8px 0;
+    resize: none;
+}

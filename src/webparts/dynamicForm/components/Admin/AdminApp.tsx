@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IFormDefinition } from '../../../../models/IFormDefinition';
 import { AdminDashboard } from './AdminDashboard';
-import { FormDesigner } from './FormDesigner';
+import { FormDesignerV2 } from '../v2/FormDesignerV2';
 import { FormDefinitionService } from '../../../../services/FormDefinitionService';
 import { SPFI } from '@pnp/sp';
 import { v4 as uuidv4 } from 'uuid';
@@ -52,8 +52,9 @@ export const AdminApp: React.FC<IAdminAppProps> = (props) => {
                 />
             )}
             {view === 'editor' && currentForm && (
-                <FormDesigner
+                <FormDesignerV2
                     form={currentForm}
+                    sp={props.sp}
                     onSave={handleSave}
                     onCancel={() => setView('list')}
                 />
