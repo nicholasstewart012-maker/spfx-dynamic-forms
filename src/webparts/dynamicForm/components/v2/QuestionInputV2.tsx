@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TextField, Dropdown, Toggle, DatePicker, IDropdownOption, Stack, Label } from '@fluentui/react';
+import { TextField, Dropdown, Toggle, DatePicker, IDropdownOption, Stack, Label, Rating, RatingSize } from '@fluentui/react';
 import { IQuestion } from '../../../../models/IFormDefinition';
 
 interface IQuestionInputV2Props {
@@ -62,12 +62,21 @@ export const QuestionInputV2: React.FC<IQuestionInputV2Props> = (props) => {
                 return (
                     <DatePicker
                         value={value ? new Date(value) : undefined}
-                        onSelectDate={(d) => onChange(d)}
+                        onSelectDate={(d) => onChange(d ? d.toISOString() : null)}
                         underlined
                     />
                 );
+            case 'Rating':
+                return (
+                    <Rating
+                        min={1}
+                        max={5}
+                        rating={value ? parseInt(value) : 0}
+                        onChange={(e, v) => onChange(v)}
+                        size={RatingSize.Large}
+                    />
+                );
             case 'YesNo': // Legacy support
-            case 'Rating': // Future
             default:
                 return (
                     <TextField

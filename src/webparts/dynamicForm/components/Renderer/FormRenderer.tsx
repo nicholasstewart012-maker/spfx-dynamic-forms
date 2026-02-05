@@ -67,8 +67,46 @@ export const FormRenderer: React.FC<IFormRendererProps> = (props) => {
         }
     };
 
-    // Visibility Logic (Simplified for V2 MVP - can restore full logic later)
-    const evaluateVisibility = (qId: string) => true;
+    // Visibility Logic
+    const evaluateVisibility = (questionId: string): boolean => {
+        if (!form || !form.rules) return true;
+
+        // Find rules targeting this question
+        const targetRules = form.rules.filter(r => r.targetQuestionId === questionId);
+        if (targetRules.length === 0) return true; // No rules, visible by default
+
+        let shouldShow = true;
+        let controlledByShow = false;
+
+        for (const rule of targetRules) {
+            const sourceValue = responses[rule.sourceQuestionId];
+            let match = false;
+
+            // Normalize values for comparison
+            const valA = String(sourceValue || '').toLowerCase();
+            const valB = String(rule.value || '').toLowerCase();
+
+            switch (rule.operator) {
+                case 'equals': match = valA === valB; break;
+                case 'notEquals': match = valA !== valB; break;
+                case 'contains': match = valA.indexOf(valB) !== -1; break;
+                case 'greaterThan': match = parseFloat(valA) > parseFloat(valB); break;
+                case 'lessThan': match = parseFloat(valA) < parseFloat(valB); break;
+            }
+
+            if (rule.action === 'Hide' && match) return false; // Hard hide
+            if (rule.action === 'Show') {
+                controlledByShow = true;
+                if (match) shouldShow = true;
+            }
+        }
+
+        if (controlledByShow) {
+            return shouldShow;
+        }
+
+        return true;
+    };
 
     if (loading) return <div className={styles.canvas}><Spinner label="Loading..." /></div>;
     if (error) return <div className={styles.canvas}><MessageBar messageBarType={MessageBarType.error}>{error}</MessageBar></div>;
