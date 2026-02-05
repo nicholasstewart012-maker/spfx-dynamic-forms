@@ -28,7 +28,15 @@ const DesignerCanvas: React.FC<{ onSave: (f: IFormDefinition) => Promise<void>, 
             <Stack horizontal horizontalAlign="space-between" styles={{ root: { width: '100%', maxWidth: 720, marginBottom: 20 } }}>
                 <DefaultButton text="Back" onClick={onCancel} />
                 <Stack horizontal tokens={{ childrenGap: 10 }}>
-                    <PrimaryButton text="Preview" iconProps={{ iconName: 'View' }} />
+                    <PrimaryButton text="Preview" iconProps={{ iconName: 'View' }} disabled />
+                    <PrimaryButton
+                        text="Collect Responses"
+                        iconProps={{ iconName: 'Share' }}
+                        onClick={() => {
+                            navigator.clipboard.writeText(form.id);
+                            alert(`Form ID copied!\n\nID: ${form.id}\n\nAdd the 'Dynamic Form' web part to a page and paste this ID.`);
+                        }}
+                    />
                     <PrimaryButton text="Save" onClick={() => { onSave(form).catch(console.error); }} />
                 </Stack>
             </Stack>

@@ -72,11 +72,25 @@ export const FormRenderer: React.FC<IFormRendererProps> = (props) => {
 
     if (loading) return <div className={styles.canvas}><Spinner label="Loading..." /></div>;
     if (error) return <div className={styles.canvas}><MessageBar messageBarType={MessageBarType.error}>{error}</MessageBar></div>;
-    if (submitted) return <div className={styles.canvas}><div className={styles.card}><div className={styles.cardContent} style={{ textAlign: 'center', padding: 50 }}>
-        <div style={{ fontSize: 40, color: '#107C10', marginBottom: 20 }}>✓</div>
-        <h2>Thanks!</h2>
-        <p>Your response was submitted.</p>
-    </div></div></div>;
+    if (submitted) return (
+        <div className={styles.canvas}>
+            <div className={styles.card} style={{ maxWidth: 600, padding: 40, textAlign: 'center' }}>
+                <div className={styles.successIcon}>✓</div>
+                <div className={styles.successText}>Thanks!</div>
+                <p>Your response was submitted.</p>
+                <PrimaryButton
+                    text="Submit another response"
+                    onClick={() => {
+                        setForm(null); // Force reload
+                        setSubmitted(false);
+                        setResponses({});
+                        loadForm();
+                    }}
+                    styles={{ root: { marginTop: 20 } }}
+                />
+            </div>
+        </div>
+    );
     if (!form) return <div className={styles.canvas}>Form not found</div>;
 
     return (

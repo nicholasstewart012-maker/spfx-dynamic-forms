@@ -68,3 +68,34 @@
     padding: 8px 0;
     resize: none;
 }
+
+// Success Page Animations
+@keyframes scaleIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    80% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.successIcon {
+    font-size: 64px;
+    color: #107C10;
+    margin-bottom: 24px;
+    animation: scaleIn 0.5s ease-out forwards;
+}
+
+.successText {
+    font-size: 24px;
+    font-weight: 600;
+    color: #323130;
+    margin-bottom: 8px;
+}
