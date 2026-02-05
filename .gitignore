@@ -14,10 +14,10 @@ lib-commonjs
 lib-esm
 jest-output
 release
-solution
+# solution
 temp
-*.sppkg
-.heft
+# *.sppkg
+!.heft
 
 # Coverage directory used by tools like istanbul
 coverage
